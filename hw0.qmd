@@ -1,0 +1,49 @@
+---
+title: "BST260_HW0"
+format: html
+editor: visual
+author: Zhirou(Kim) Li
+---
+
+## Question 1:
+
+Given a quadratic equation $f(x)=ax^2+bx+c=0$ where a is 1, b is -1 and c is -2. First, calculate the discriminant. If the discriminant is above 0, it has 2 answers; if the discriminant is 0, it has 1 answer; if the discriminant below 0, it has zero answer. Answers are calculated by these formula: $(-b + \sqrt{(b^2 - 4 * a * c)}) / (2 * a)=2$ and$(-b - \sqrt{(b^2 - 4 * a * c)}) / (2 * a)=-1$
+
+```{r}
+#| echo: FALSE
+a<-1
+b<--1
+c<--2
+
+dis<-(b^2) - (4*a*c)
+
+genans <- function(dis) { 
+  if (dis>0){
+    answer1 <- (-b + sqrt(b^2 - 4 * a * c)) / (2 * a)
+    answer2<-(-b - sqrt(b^2 - 4 * a * c)) / (2 * a)
+    paste("This quadratic equation's discriminant is",dis,"and the two answers are",answer1,"and",answer2)
+  }
+  else if (dis==0){
+    answer <- (-b + sqrt(b^2 - 4 * a * c)) / (2 * a)
+    print("This quadratic equation's discriminant is",dis,"and the answer for this quadratic equation is",answer)
+  }
+  else{
+    print("Discriminant is below 0 so there is no real number answer.")
+  }
+    
+}
+
+genans(dis)
+
+```
+
+## Question 2:
+
+The graph for with the range of x (-5,5) is shown below:
+
+```{r}
+#| echo: false
+x<-seq(5,-5,length=300)
+plot(x,a*x^2+b*x+c,type='l')
+abline(h=0,lty=2)
+```
